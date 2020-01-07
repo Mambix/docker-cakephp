@@ -19,11 +19,14 @@ RUN apt-get update && apt-get install -y \
       soap \
       pdo_mysql
 
+# Enable apache2 modules
+RUN a2enmod rewrite expires deflate setenvif headers filter include http2
+
 # Set apache2 settings to run CakePHP from webroot folder
 COPY rootfs /
 
-#change uid and gid of apache to docker user uid/gid
+# change uid and gid of apache to docker user uid/gid
 RUN usermod -u 1000 www-data && groupmod -g 1000 www-data
 
-#change ownership of our applications
+# change ownership of our applications
 RUN chown -R www-data:www-data $APP_HOME
