@@ -10,6 +10,8 @@ RUN apt-get update && apt-get install -y \
     libicu-dev \
     libxml2-dev \
     libpng-dev \
+    libjpeg-dev \
+    libgif-dev \
     && rm -r /var/lib/apt/lists/* \
     && docker-php-ext-install -j$(nproc) \
       gd \
