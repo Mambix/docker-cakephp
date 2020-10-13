@@ -1,11 +1,11 @@
-FROM php:7.4.7-apache
+FROM php:7.4.11-apache
 LABEL maintainer "ledi.mambix@gmail.com"
 
 #set our application folder as an environment variable
 ARG debug_mode=""
 ENV APP_HOME /var/www/html
 
-#install all the system dependencies and enable PHP modules 
+#install all the system dependencies and enable PHP modules
 RUN apt-get update && apt-get install -y \
     libicu-dev \
     libxml2-dev \
