@@ -1,5 +1,7 @@
 #!/bin/bash
 
-docker build --build-arg debug_mode=--no-dev -t mambix/cakephpbase:php7.2.14-apache .
-docker tag mambix/cakephpbase:php7.2.14-apache mambix/cakephpbase:php7.2.14-apache
-docker push mambix/cakephpbase:php7.2.14-apache
+gitLabel=`git branch | grep \* | cut -d ' ' -f2`
+
+docker build --build-arg debug_mode=--no-dev -t mambix/cakephpbase:$gitLabel .
+docker tag mambix/cakephpbase:$gitLabel mambix/cakephpbase:$gitLabel
+docker push mambix/cakephpbase:$gitLabel
