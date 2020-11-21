@@ -4,6 +4,7 @@ LABEL maintainer "ledi.mambix@gmail.com"
 #set our application folder as an environment variable
 ARG debug_mode=""
 ENV APP_HOME /var/www/html
+WORKDIR ${APP_HOME}
 
 #install all the system dependencies and enable PHP modules
 RUN set -ex \
