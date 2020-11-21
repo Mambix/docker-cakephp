@@ -42,7 +42,6 @@ RUN set -eux; \
 	chown www-data:www-data /var/www/html; \
 	chmod 777 /var/www/html
 
-ENV PHP_EXTRA_CONFIGURE_ARGS --enable-maintainer-zts --disable-cgi
 ENV APACHE_CONFDIR /etc/apache2
 ENV APACHE_ENVVARS $APACHE_CONFDIR/envvars
 
@@ -102,7 +101,7 @@ RUN { \
 	&& a2enconf docker-php
 
 ENV PHP_EXTRA_BUILD_DEPS apache2-dev
-ENV PHP_EXTRA_CONFIGURE_ARGS --with-apxs2 --disable-cgi
+ENV PHP_EXTRA_CONFIGURE_ARGS --enable-maintainer-zts --disable-cgi --with-apxs2 --disable-cgi
 
 # Apply stack smash protection to functions using local buffers and alloca()
 # Make PHP's main executable position-independent (improves ASLR security mechanism, and has no performance impact on x86_64)
