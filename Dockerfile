@@ -1,4 +1,4 @@
-FROM php:7.4.12-zts
+FROM mambix/cakephpbase:php7.4.12-zts-apache
 LABEL maintainer "ledi.mambix@gmail.com"
 
 #set our application folder as an environment variable
@@ -8,7 +8,6 @@ ENV APP_HOME /var/www/html
 #install all the system dependencies and enable PHP modules
 RUN set -ex \
     && apt-get update && apt-get install -y \
-    apache2 \
     libicu-dev \
     libxml2-dev \
     libpng-dev \
@@ -40,15 +39,3 @@ RUN usermod -u 1000 www-data && groupmod -g 1000 www-data
 
 # change ownership of our applications
 RUN chown -R www-data:www-data $APP_HOME
-
-# sodium was built as a shared module (so that it can be replaced later if so desired), so let's enable it too (https://github.com/docker-library/php/issues/598)
-RUN docker-php-ext-enable sodium
-
-ENTRYPOINT ["docker-php-entrypoint"]
-# https://httpd.apache.org/docs/2.4/stopping.html#gracefulstop
-STOPSIGNAL SIGWINCH
-
-WORKDIR /var/www/html
-
-EXPOSE 80
-CMD ["apache2-foreground"]
