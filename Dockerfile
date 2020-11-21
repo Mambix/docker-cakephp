@@ -27,7 +27,8 @@ RUN apt-get update && apt-get install -y \
       pdo_mysql
 
 # Enable apache2 modules
-RUN a2enmod rewrite expires deflate setenvif headers filter include http2
+RUN a2dismod mpm_worker mpm_prefork
+RUN a2enmod rewrite expires deflate setenvif headers filter include mpm_event http2
 
 # Set apache2 settings to run CakePHP from webroot folder
 COPY rootfs /
