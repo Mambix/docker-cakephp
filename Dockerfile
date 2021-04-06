@@ -24,7 +24,7 @@ RUN apt-get update && apt-get install -y \
       dom \
       xml \
       soap \
-      pdo_mysql
+      mysqli
 
 # Enable apache2 modules
 RUN a2enmod rewrite expires deflate setenvif headers filter include http2
