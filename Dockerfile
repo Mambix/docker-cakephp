@@ -1,4 +1,4 @@
-FROM php:7.2.14-apache
+FROM php:5.6-apache
 LABEL maintainer "ledi.mambix@gmail.com"
 
 #set our application folder as an environment variable
