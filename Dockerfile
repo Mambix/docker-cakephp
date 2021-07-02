@@ -16,8 +16,8 @@ RUN apt-get update && apt-get install -y \
     libfreetype6-dev \
     && rm -r /var/lib/apt/lists/* \
     && docker-php-ext-configure gd \
-      --with-freetype-dir=/usr/include/ \
-      --with-jpeg-dir=/usr/include/ \
+      --with-freetype=/usr/include/ \
+      --with-jpeg=/usr/include/ \
     && docker-php-ext-install -j$(nproc) \
       gd \
       intl \
