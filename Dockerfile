@@ -1,4 +1,4 @@
-FROM php:7.4.12-zts-apache
+FROM mambix/cakephpbase:php7.4.12-zts-apache
 LABEL maintainer "ledi.mambix@gmail.com"
 
 #set our application folder as an environment variable
